@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator Luas Segitiga</title>
+    <style>
+      .form-container {
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 5px;
+      }
+
+      .hasil {
+        margin-top: 10px;
+      }
+
+      .error1,
+      .error2 {
+        color: red;
+      }
+    </style>
+    <script>
+      function hitungLuas() {
+        // Mendapatkan nilai input dari form
+        var alas = document.getElementById("alas").value;
+        var tinggi = document.getElementById("tinggi").value;
+
+        // Validasi input untuk memastikan nilai yang dimasukkan adalah angka
+        if (isNaN(alas)) {
+          document.getElementById("error1").innerHTML =
+            "Mohon masukkan angka pada isian alas!";
+          document.getElementById("hasil").innerHTML = "";
+        } else if (isNaN(alas)) {
+          document.getElementById("error2").innerHTML =
+            "Mohon masukkan angka pada isian tinggi!";
+          document.getElementById("hasil").innerHTML = "";
+          return;
+        }
+
+        // Menghapus pesan error jika ada
+        document.getElementById("error1").innerHTML = "";
+        document.getElementById("error2").innerHTML = "";
+
+        // Menghitung luas segitiga
+        var luas = 0.5 * alas * tinggi;
+
+        // Menampilkan hasil pada elemen dengan id "hasil"
+        document.getElementById("hasil").innerHTML = "Luas Segitiga: " + luas;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Kalkulator Luas Segitiga</h1>
+      <img
+        src="https://cilacapklik.com/wp-content/uploads/2020/09/1601426005-picsay.jpg"
+        alt=""
+        sizes="200px"
+        srcset=""
+      />
+      <div class="form-group">
+        <label for="alas">Alas:</label>
+        <input type="text" id="alas" name="alas" oninput="hitungLuas()" />
+        <div id="error1" class="error1"></div>
+      </div>
+      <div class="form-group">
+        <label for="tinggi">Tinggi:</label>
+        <input type="text" id="tinggi" name="tinggi" oninput="hitungLuas()" />
+        <div id="error2" class="error2"></div>
+      </div>
+      <div id="hasil" class="hasil"></div>
+    </div>
+  </body>
+</html>
