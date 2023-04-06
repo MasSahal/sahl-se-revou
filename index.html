@@ -3,9 +3,16 @@
   <head>
     <title>Kalkulator Luas Segitiga</title>
     <style>
+      body {
+        background-color: #f3efef; /* Warna latar belakang body */
+      }
+
       .form-container {
         width: 300px;
         margin: 0 auto;
+        background-color: #ffffff; /* Warna latar belakang form */
+        padding: 20px;
+        border-radius: 5px;
       }
 
       .form-group {
@@ -26,8 +33,7 @@
         margin-top: 10px;
       }
 
-      .error1,
-      .error2 {
+      .error {
         color: red;
       }
     </style>
@@ -38,47 +44,45 @@
         var tinggi = document.getElementById("tinggi").value;
 
         // Validasi input untuk memastikan nilai yang dimasukkan adalah angka
+        var errorAlas = document.getElementById("errorAlas");
+        var errorTinggi = document.getElementById("errorTinggi");
+
         if (isNaN(alas)) {
-          document.getElementById("error1").innerHTML =
-            "Mohon masukkan angka pada isian alas!";
+          errorAlas.innerHTML = "Mohon masukkan angka pada field Alas!";
           document.getElementById("hasil").innerHTML = "";
-        } else if (isNaN(alas)) {
-          document.getElementById("error2").innerHTML =
-            "Mohon masukkan angka pada isian tinggi!";
-          document.getElementById("hasil").innerHTML = "";
-          return;
+        } else {
+          errorAlas.innerHTML = "";
         }
 
-        // Menghapus pesan error jika ada
-        document.getElementById("error1").innerHTML = "";
-        document.getElementById("error2").innerHTML = "";
+        if (isNaN(tinggi)) {
+          errorTinggi.innerHTML = "Mohon masukkan angka pada field Tinggi!";
+          document.getElementById("hasil").innerHTML = "";
+        } else {
+          errorTinggi.innerHTML = "";
+        }
 
-        // Menghitung luas segitiga
-        var luas = 0.5 * alas * tinggi;
-
-        // Menampilkan hasil pada elemen dengan id "hasil"
-        document.getElementById("hasil").innerHTML = "Luas Segitiga: " + luas;
+        // Menghitung luas segitiga jika kedua input valid
+        if (!isNaN(alas) && !isNaN(tinggi)) {
+          var luas = 0.5 * alas * tinggi;
+          document.getElementById("hasil").innerHTML = "Luas Segitiga: " + luas;
+        }
       }
     </script>
   </head>
   <body>
     <div class="form-container">
       <h1>Kalkulator Luas Segitiga</h1>
-      <img
-        src="https://cilacapklik.com/wp-content/uploads/2020/09/1601426005-picsay.jpg"
-        alt=""
-        sizes="200px"
-        srcset=""
-      />
       <div class="form-group">
         <label for="alas">Alas:</label>
         <input type="text" id="alas" name="alas" oninput="hitungLuas()" />
-        <div id="error1" class="error1"></div>
+        <div id="errorAlas" class="error"></div>
+        <!-- Menampilkan pesan error untuk field Alas -->
       </div>
       <div class="form-group">
         <label for="tinggi">Tinggi:</label>
         <input type="text" id="tinggi" name="tinggi" oninput="hitungLuas()" />
-        <div id="error2" class="error2"></div>
+        <div id="errorTinggi" class="error"></div>
+        <!-- Menampilkan pesan error untuk field Tinggi -->
       </div>
       <div id="hasil" class="hasil"></div>
     </div>
