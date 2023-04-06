@@ -1,0 +1,50 @@
+body {
+  background-color: #f3efef; /* Warna latar belakang body */
+}
+
+.form-container {
+  width: 300px;
+  margin: 0 auto;
+  background-color: #ffffff; /* Warna latar belakang form */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 5vh;
+  padding: 10px auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.error {
+  color: #ff0000;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.hasil {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+hr {
+  width: 300px;
+  height: 5px;
+  background-color: #ffffff;
+}
+/* Warna latar belakang tag body */
+/* body {
+  background-color: #f9f9f9;
+} */
